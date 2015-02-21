@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,7 +20,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json.Linq;
 
-
 //http://json2csharp.com/#
 //http://blogs.msdn.com/b/pakistan/archive/2013/06/14/getting-started-with-web-requests-amp-json-in-windows-phone.aspx
 //API directories.
@@ -33,30 +33,9 @@ namespace TestingDestinyAPI
 
     public partial class MainPage : PhoneApplicationPage
     {
-        public int ConsoleVersion;
-        public string UserID;
-
-        public class Response
-        {
-            public string iconPath { get; set; }
-            public int membershipType { get; set; }
-            public string membershipId { get; set; }
-            public string displayName { get; set; }
-        }
-
-        public class MessageData
-        {
-        }
-
-        public class RootObject
-        {
-            public List<Response> Response { get; set; }
-            public int ErrorCode { get; set; }
-            public int ThrottleSeconds { get; set; }
-            public string ErrorStatus { get; set; }
-            public string Message { get; set; }
-            public MessageData MessageData { get; set; }
-        }
+        public int _ConsoleVersion;
+        public string _UserID;
+        public string _MemID;
 
 
         // Constructor
@@ -64,14 +43,16 @@ namespace TestingDestinyAPI
         {
             InitializeComponent();
 
+            
+
             //Xbox
-            if (ConsoleVersion == 1)
+            if (_ConsoleVersion == 1)
             {
                 UserInput_txt.Text = "Enter your Gamertag";
             }
 
             //PSN
-            if (ConsoleVersion == 2)
+            if (_ConsoleVersion == 2)
             {
                 UserInput_txt.Text = "Enter your PSN ID";
             }
@@ -85,15 +66,15 @@ namespace TestingDestinyAPI
 
         private void xbox_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (ConsoleVersion == 1)
+            if (_ConsoleVersion == 1)
             {
                 PSN_btn.IsEnabled = true;
                 PSN_btn.Content = "PSN";
-                ConsoleVersion = 0;
+                _ConsoleVersion = 0;
             }
             else
             {
-                ConsoleVersion = 1;
+                _ConsoleVersion = 1;
                 //PSN_btn.Visibility = Visibility.Collapsed;
                 PSN_btn.IsEnabled = false;
                 PSN_btn.Content = "Tap again for PSN";
@@ -104,15 +85,15 @@ namespace TestingDestinyAPI
         private void PSN_btn_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ConsoleVersion == 2)
+            if (_ConsoleVersion == 2)
             {
                 xbox_btn.IsEnabled = true;
                 xbox_btn.Content = "Xbox";
-                ConsoleVersion = 0;
+                _ConsoleVersion = 0;
             }
             else
             {
-                ConsoleVersion = 2;
+                _ConsoleVersion = 2;
                 //xbox_btn.Visibility = Visibility.Collapsed;
                 xbox_btn.IsEnabled = false;
                 xbox_btn.Content = "Tap again for Xbox";
@@ -122,35 +103,41 @@ namespace TestingDestinyAPI
         private void LogIn_btn_Click(object sender, RoutedEventArgs e)
         {
 
+            _UserID = UserInput_txt.Text;
             Download();
 
-           
+            
         }
-
-
         
         public void Download()
         {
             DownloadString((result) =>
             {
-                
-                //!!Require to import Newtonsoft.Json.dll for JObject!!
-                JObject fdata = JObject.Parse(result);
+
+                LoadingBar.Visibility = Visibility.Collapsed;
+
+                JObject data = JObject.Parse(result);
 
                 //****************
                 // RIGHT HERE !! *
                 //****************
 
                 //I want to be able to parse through the Json object till I find "membershipId" and then display the contents.
+                //Cheap work around (hardcoded)
+                JToken intoResponse = data.First.First.First;
+                
+                _MemID = intoResponse["membershipId"].ToString();
+                UserInput_txt.Text = intoResponse["membershipId"].ToString(); 
 
-                UserInput_txt.Text = fdata["Message"].ToString();
 
                 //********
                 // /END **
                 //********
 
-            }, "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/1/leroyjenkins980/");
+            }, ("http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/"+ _ConsoleVersion +"/" + _UserID + "/"));
         }
+
+        //http://www.bungie.net/Platform/Destiny/1/Account/4611686018434091019
 
         public void DownloadString(Action<string> callback, string url)
         {
@@ -160,11 +147,12 @@ namespace TestingDestinyAPI
                 if (q.Error == null)
                 {
                     callback(q.Result);
-
                 }
 
             };
 
+            //Show the loading bar
+            LoadingBar.Visibility = Visibility.Visible;
             client.DownloadStringAsync(new Uri(url));
 
         }

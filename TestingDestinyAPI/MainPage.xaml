@@ -41,8 +41,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="APPTITLE" Text="DESTINY CHECKLIST" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock x:Name="TitleBlock" Text="log-in" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -51,6 +51,7 @@
             <TextBox x:Name="UserInput_txt" HorizontalAlignment="Left" Margin="80,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="325"/>
             <Button x:Name="xbox_btn" Content="Xbox" HorizontalAlignment="Left" Margin="80,137,0,0" VerticalAlignment="Top" Click="xbox_btn_Click" Width="325"/>
             <Button x:Name="PSN_btn" Content="PSN" HorizontalAlignment="Left" Margin="80,53,0,0" VerticalAlignment="Top" Click="PSN_btn_Click" Width="325"/>
+            <ProgressBar x:Name="LoadingBar" HorizontalAlignment="Left" Height="57" Margin="80,289,0,0" VerticalAlignment="Top" Width="325" Foreground="{StaticResource PhoneAccentBrush}" IsIndeterminate="True" Visibility="Collapsed"/>
 
         </Grid>
 

@@ -30,12 +30,13 @@ using Newtonsoft.Json.Linq;
 namespace TestingDestinyAPI
 {
 
-
     public partial class MainPage : PhoneApplicationPage
     {
         public int _ConsoleVersion;
         public string _UserID;
-        public string _MemID;
+        //public string _MemID;
+        //used to get membershipID from bungie.net
+        
 
 
         // Constructor
@@ -43,8 +44,7 @@ namespace TestingDestinyAPI
         {
             InitializeComponent();
 
-            
-
+           
             //Xbox
             if (_ConsoleVersion == 1)
             {
@@ -61,7 +61,6 @@ namespace TestingDestinyAPI
             //BuildLocalizedApplicationBar();
             
         }
-
 
 
         private void xbox_btn_Click(object sender, RoutedEventArgs e)
@@ -104,98 +103,38 @@ namespace TestingDestinyAPI
         {
 
             _UserID = UserInput_txt.Text;
-            Download();
+
+            //****************************************
+            //** Save _UserID into isolated stroage **
+            //****************************************
+            IsolatedStorageSettings save = IsolatedStorageSettings.ApplicationSettings;
+            if (!save.Contains("userId"))
+            {
+                
+                save.Add("userId", _UserID);
+            }
+            else
+            {
+                save.Remove("userId");
+                save.Add("userId", _UserID);
+            }
+            save.Save();
+
+            //This is used to get membershipId from Bungie.net
+            string pushURL = ("http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/" + _ConsoleVersion + "/" + _UserID + "/");
+
+            getMemId mem = new getMemId();
+
+            mem.Download(pushURL);
+
+            if (mem._MemID != null)
+            {
+                //Jump to the next page         
+                NavigationService.Navigate(new Uri("/Character.xaml", UriKind.Relative));
+            }
 
             
         }
-        
-        public void Download()
-        {
-            DownloadString((result) =>
-            {
-
-                LoadingBar.Visibility = Visibility.Collapsed;
-
-                JObject data = JObject.Parse(result);
-
-                //****************
-                // RIGHT HERE !! *
-                //****************
-
-                //I want to be able to parse through the Json object till I find "membershipId" and then display the contents.
-                //Cheap work around (hardcoded)
-                JToken intoResponse = data.First.First.First;
-                
-                _MemID = intoResponse["membershipId"].ToString();
-                UserInput_txt.Text = intoResponse["membershipId"].ToString(); 
-
-
-                //********
-                // /END **
-                //********
-
-            }, ("http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/"+ _ConsoleVersion +"/" + _UserID + "/"));
-        }
-
-        //http://www.bungie.net/Platform/Destiny/1/Account/4611686018434091019
-
-        public void DownloadString(Action<string> callback, string url)
-        {
-            WebClient client = new WebClient();
-            client.DownloadStringCompleted += (p, q) =>
-            {
-                if (q.Error == null)
-                {
-                    callback(q.Result);
-                }
-
-            };
-
-            //Show the loading bar
-            LoadingBar.Visibility = Visibility.Visible;
-            client.DownloadStringAsync(new Uri(url));
-
-        }
-    
-
-        // **************************************
-        // **  OLD CODE I DON'T USE RIGHT NOW  **
-        // **************************************
-
-        // **** Used to retrieve the info (Doesn't work) ****
-        
-        //UserID = UserInput_txt.Text;
-        //string url = "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/" + ConsoleVersion + "/" + UserID +"/";
-        //WebClient webClient = new WebClient();
-        //string test = string.Format("http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/{0}/{1}/", ConsoleVersion, UserInput_txt.Text);
-
-        //webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
-        //webClient.DownloadStringAsync(new Uri(string.Format("http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/{0}/{1}/", ConsoleVersion, UserInput_txt.Text)));
-        //MessageBox.Show(test);
-
-
-        
-        /*private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(e.Result))
-                {
-                    //Parse result into Json string
-                    
-                    //var root1 = JsonConvert.DeserializeObject<RootObject>(e.Result);
-                    var root2 = JsonConvert.DeserializeObject<Response>(e.Result);
-                    this.DataContext = root2;
-                    MessageBox.Show(root2.membershipId);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        */
-
 
 
         // Sample code for building a localized ApplicationBar

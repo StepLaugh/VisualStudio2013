@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.IO.IsolatedStorage;
+using System.Windows.Media;
 
 namespace TestingDestinyAPI
 {
@@ -17,8 +18,15 @@ namespace TestingDestinyAPI
         {
             InitializeComponent();
 
+            //userName_txt.FontFamily = new FontFamily("/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams");
+            //clanName_txt.FontFamily = new FontFamily("/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams");
+            //clanTag_txt.FontFamily = new FontFamily("/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams");
+            //grimoireScore_txt.FontFamily = new FontFamily("/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams");
+            //memId_txt.FontFamily = new FontFamily("/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams");
+
             //GET
             IsolatedStorageSettings fetch = IsolatedStorageSettings.ApplicationSettings;
+
             if (fetch.Contains("membershipId"))
             {
                 memId_txt.Text = fetch["membershipId"].ToString();
@@ -29,9 +37,40 @@ namespace TestingDestinyAPI
                 userName_txt.Text = fetch["userId"].ToString();
             }
 
+            if (fetch.Contains("grimoireScore"))
+            {
+                grimoireScore_txt.Text = fetch["grimoireScore"].ToString();
+            }
+
+            if (fetch.Contains("clanName"))
+            {
+                clanName_txt.Text = fetch["clanName"].ToString();
+            }
+
+            if (fetch.Contains("clanTag"))
+            {
+                clanTag_txt.Text = fetch["clanTag"].ToString();
+            }
+
             fetch.Save();
 
-            //http://www.bungie.net/Platform/Destiny/1/Account/4611686018434091019
+            //MAIN CODE
+            //*********
+
+            //Debug
+            
+
+
+
+
+
+            
+        }
+
+        private void goToLogin_btn_Click(object sender, RoutedEventArgs e)
+        {
+            //App.Current.RootVisual = new MainPage();
+            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
 
         }
     }

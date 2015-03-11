@@ -15,25 +15,56 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Background="Transparent">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="pageTitle" Text="DESTINY CHECKLIST" Style="{StaticResource PhoneTextNormalStyle}"/>
-		</StackPanel>
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
 
         <!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Margin="10,62,14,10" Grid.RowSpan="2">
-			<Border x:Name="char1_border" BorderBrush="Yellow" BorderThickness="1" HorizontalAlignment="Left" Height="101" Margin="38,239,0,0" VerticalAlignment="Top" Width="100"/>
-			<TextBlock x:Name="memId_txt" Margin="38,42,33,0" TextWrapping="Wrap" Text="MembershipID #" VerticalAlignment="Top" Height="72" Width="385" FontSize="30" HorizontalAlignment="Center"/>
-			<TextBlock x:Name="userName_txt" HorizontalAlignment="Left" Margin="38,114,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Height="72" Width="385" FontSize="50"/>
-			<Image x:Name="char1_pic" HorizontalAlignment="Left" Height="100" Margin="38,240,0,0" VerticalAlignment="Top" Width="100"/>
-			<es:Arc x:Name="char1_arc" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="101" Margin="191,239,0,0" Stretch="None" Stroke="Black" StartAngle="0" UseLayoutRounding="False" VerticalAlignment="Top" Width="103"/>
-		</Grid>
-	</Grid>
+        <Grid x:Name="ContentPanel" Margin="10,10,14,10" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="35*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="memId_txt" Margin="33,0,10,-8" TextWrapping="Wrap" Text="MembershipID #" VerticalAlignment="Bottom" Height="30" Width="413" FontSize="15" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontFamily="Caviar Dreams" TextAlignment="Right" Grid.Row="1"/>
+            <TextBlock x:Name="userName_txt" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" FontSize="75" FontFamily="Euphemia" Grid.Column="1" TextOptions.TextHintingMode="Animated" FontStretch="Condensed"/>
+            <TextBlock x:Name="grimoireScore_txt" HorizontalAlignment="Left" Margin="250,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="128" FontFamily="Euphemia" FontSize="30" Text="Grimoire" Grid.Column="1"/>
+            <TextBlock x:Name="clanName_txt" HorizontalAlignment="Left" Margin="14,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="38" FontSize="30" Grid.Column="1" FontFamily="Euphemia">
+            	<Run Text="Clan "/>
+            	<Run Text="Name"/>
+            </TextBlock>
+            <TextBlock x:Name="clanTag_txt" HorizontalAlignment="Left" Margin="14,2,0,0" TextWrapping="Wrap" Text="Clan Tag" VerticalAlignment="Top" FontFamily="Euphemia" Height="38" Width="134" FontSize="30" Grid.Column="1" Grid.Row="1"/>
+            <Button x:Name="char1_btn" Grid.ColumnSpan="2" Content="Char1" HorizontalAlignment="Left" Margin="271,31,0,0" VerticalAlignment="Top" Height="175" Width="175" BorderThickness="2" BorderBrush="#FFF3FD24" FontFamily="Euphemia" Padding="0,0,3,0" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Foreground="{StaticResource PhoneContrastBackgroundBrush}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Assets/Emblems/hunterTest.jpg" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="char2_btn" Grid.ColumnSpan="2" Content="Char2" HorizontalAlignment="Left" Margin="271,206,0,0" VerticalAlignment="Top" Width="175" Height="175" BorderThickness="2" BorderBrush="#FFF3FD24" FontFamily="Euphemia" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0,0,3,0">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Assets/Emblems/warlockTest.jpg" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="char3_btn" Grid.ColumnSpan="2" Content="Char3" HorizontalAlignment="Left" Margin="271,381,0,0" VerticalAlignment="Top" BorderThickness="2" Width="175" Height="175" BorderBrush="#FFF3FD24" FontFamily="Euphemia" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0,0,3,0">
+                <Button.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Emblems/titanTest.jpg"/>
+                </Button.Background>
+            </Button>
+            <Rectangle Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="0" Margin="108,366,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Row="1"/>
+            <Button x:Name="goToLogin_btn" Grid.ColumnSpan="2" Content="Not You?" HorizontalAlignment="Left" Margin="0,569,0,-15" Grid.Row="1" VerticalAlignment="Top" Padding="0" UseLayoutRounding="True" FontSize="14" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams" BorderThickness="0" FontStretch="Condensed" Click="goToLogin_btn_Click" Width="87"/>
+            <Button x:Name="goToRaids" Grid.ColumnSpan="2" Content="Raids" HorizontalAlignment="Left" Margin="10,72,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="0,0,2,2" FontFamily="Euphemia" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+            <Button x:Name="goToSettings" Grid.ColumnSpan="2" Content="Settings" HorizontalAlignment="Left" Margin="10,454,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="0,0,2,2" FontFamily="Euphemia" FontWeight="Bold" FontSize="36" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right"/>
+            <Button x:Name="goToExtras" Grid.ColumnSpan="2" Content="Extras" HorizontalAlignment="Left" Margin="0,329,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="0,0,2,2" FontFamily="Euphemia" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="36"/>
+            <Button Grid.ColumnSpan="2" Content="Weekly" HorizontalAlignment="Left" Margin="10,206,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="95" BorderThickness="0,0,2,2" FontFamily="Euphemia" FontWeight="Bold" HorizontalContentAlignment="Right" FontSize="36" VerticalContentAlignment="Bottom"/>
+        </Grid>
+    </Grid>
 
 </phone:PhoneApplicationPage>

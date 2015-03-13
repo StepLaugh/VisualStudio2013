@@ -15,14 +15,71 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama x:Name="RaidsPanorama" Title="Raids" Loaded="RaidsPanorama_Loaded">
+        <phone:Panorama x:Name="RaidsPanorama" Title="Raids" Loaded="RaidsPanorama_Loaded" FontSize="10">
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="Vault of Glass" RenderTransformOrigin="0.684,0.377"/>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Crota's End">
-                <Grid/>
+
+            <phone:PanoramaItem x:Name="SubRaids" Header="Vault of Glass" RenderTransformOrigin="0.684,0.377" Margin="0,-30,0,0">
+                <Grid x:Name="Playground_VOG" HorizontalAlignment="Left" Height="626" Margin="-5,-117,0,0" VerticalAlignment="Top" Width="415">
+                    <CheckBox x:Name="VOG_N_1" Content="" HorizontalAlignment="Left" Margin="22,131,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.236,0.441" Height="72" BorderThickness="3" Width="68"/>
+                    <CheckBox x:Name="VOG_H_1" Content="" HorizontalAlignment="Left" Margin="347,131,0,0" VerticalAlignment="Top" Checked="VOG_H_1_Checked"/>
+                    <CheckBox x:Name="VOG_N_2" Content="" HorizontalAlignment="Left" Margin="22,195,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="VOG_N_3" Content="" HorizontalAlignment="Left" Margin="22,256,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="VOG_N_4" Content="" HorizontalAlignment="Left" Margin="22,315,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="VOG_N_5" Content="" HorizontalAlignment="Left" Margin="22,374,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="VOG_N_Title" HorizontalAlignment="Left" Height="59" Margin="0,78,0,0" TextWrapping="Wrap" Text="Normal" VerticalAlignment="Top" Width="170" FontSize="36" TextDecorations="Underline" TextAlignment="Center"/>
+                    <TextBlock x:Name="VOG_H_Title" HorizontalAlignment="Left" Height="59" Margin="298,78,0,0" TextWrapping="Wrap" Text="Hard" VerticalAlignment="Top" Width="117" FontSize="36" TextDecorations="Underline" TextAlignment="Center" RenderTransformOrigin="0.53,0.631"/>
+                    <CheckBox x:Name="VOG_N_6" Content="" HorizontalAlignment="Left" Margin="22,431,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="VOG_Gate" HorizontalAlignment="Left" Margin="90,131,0,0" TextWrapping="Wrap" Text="Gate Chest" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,11,0,0" Width="257" TextAlignment="Center"/>
+                    <TextBlock x:Name="VOG_Oracles" HorizontalAlignment="Left" Margin="90,201,0,0" TextWrapping="Wrap" Text="Oracles" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,7,0,0" Width="257" TextAlignment="Center"/>
+                    <CheckBox x:Name="VOG_N_7" Content="" HorizontalAlignment="Left" Margin="22,489,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="VOG_H_2" Content="" HorizontalAlignment="Left" Margin="347,195,0,0" VerticalAlignment="Top" Checked="VOG_H_2_Checked"/>
+                    <CheckBox x:Name="VOG_H_3" Content="" HorizontalAlignment="Left" Margin="347,256,0,0" VerticalAlignment="Top" Checked="VOG_H_3_Checked"/>
+                    <CheckBox x:Name="VOG_H_4" Content="" HorizontalAlignment="Left" Margin="347,315,0,0" VerticalAlignment="Top" Checked="VOG_H_4_Checked"/>
+                    <CheckBox x:Name="VOG_H_5" Content="" HorizontalAlignment="Left" Margin="347,374,0,0" VerticalAlignment="Top" Checked="VOG_H_5_Checked"/>
+                    <CheckBox x:Name="VOG_H_6" Content="" HorizontalAlignment="Left" Margin="347,431,0,0" VerticalAlignment="Top" Checked="VOG_H_6_Checked"/>
+                    <CheckBox x:Name="VOG_H_7" Content="" HorizontalAlignment="Left" Margin="347,489,0,0" VerticalAlignment="Top" Checked="VOG_H_7_Checked"/>
+                    <TextBlock x:Name="VOG_Templar" HorizontalAlignment="Left" Margin="90,256,0,0" TextWrapping="Wrap" Text="Templar" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,7,0,0" Width="252" TextAlignment="Center"/>
+                    <TextBlock x:Name="VOG_ExoticChest" HorizontalAlignment="Left" Margin="90,315,0,0" TextWrapping="Wrap" Text="Exotic Chest" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,7,0,0" Width="257" TextAlignment="Center"/>
+                    <TextBlock x:Name="VOG_GorgonChest" HorizontalAlignment="Left" Margin="90,374,0,0" TextWrapping="Wrap" Text="Gorgon Chest" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,7,0,0" Width="257" TextAlignment="Center"/>
+                    <TextBlock x:Name="VOG_Gatekeeper" HorizontalAlignment="Left" Margin="90,431,0,0" TextWrapping="Wrap" Text="Gatekeeper" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,7,0,0" Width="257" TextAlignment="Center"/>
+                    <TextBlock x:Name="VOG_Atheon" HorizontalAlignment="Left" Margin="90,489,0,0" TextWrapping="Wrap" Text="Atheon" VerticalAlignment="Top" FontSize="32" Height="72" Padding="0,7,0,0" Width="257" TextAlignment="Center"/>
+                    <Button x:Name="Save1_btn" Content="Save" HorizontalAlignment="Left" Margin="139,550,0,0" VerticalAlignment="Top" BorderThickness="2" Width="154" Height="66" Click="Save1_btn_Click"/>
+                </Grid>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem x:Name="SubRaid2" Header="Crota's End" FontFamily="Portable User Interface" Padding="0" Margin="0,-30,0,0">
+                <Grid x:Name="Playground_CE" HorizontalAlignment="Left" Height="624" Margin="-7,-119,0,0" VerticalAlignment="Top" Width="424">
+                    <CheckBox x:Name="CE_N_1" Content="" HorizontalAlignment="Left" Margin="15,126,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CE_N_2" Content="" HorizontalAlignment="Left" Margin="15,187,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CE_N_3" Content="" HorizontalAlignment="Left" Margin="15,247,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CE_N_4" Content="" HorizontalAlignment="Left" Margin="15,308,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="CE_N_Title" HorizontalAlignment="Left" Margin="15,87,0,0" TextWrapping="Wrap" Text="Normal" VerticalAlignment="Top" FontSize="36" FontFamily="Portable User Interface" TextDecorations="Underline"/>
+                    <TextBlock x:Name="CE_H_Title" HorizontalAlignment="Left" Margin="307,87,0,0" TextWrapping="Wrap" Text="Hard" VerticalAlignment="Top" TextDecorations="Underline" FontSize="36" FontFamily="Portable User Interface"/>
+                    <CheckBox x:Name="CE_N_5" Content="" HorizontalAlignment="Left" Margin="15,370,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CE_N_6" Content="" HorizontalAlignment="Left" Margin="15,430,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CE_N_7" Content="" HorizontalAlignment="Left" Margin="15,493,0,0" VerticalAlignment="Top" FontFamily="Portable User Interface" Visibility="Collapsed"/>
+                    <Button x:Name="Save2_btn" Content="Save" HorizontalAlignment="Left" Margin="141,558,0,0" VerticalAlignment="Top" Width="154" Height="66" Padding="0" Click="Save2_btn_Click"/>
+                    <CheckBox x:Name="CE_H_1" Content="" HorizontalAlignment="Left" Margin="346,126,0,0" VerticalAlignment="Top" Checked="CE_H_1_Checked"/>
+                    <CheckBox x:Name="CE_H_2" Content="" HorizontalAlignment="Left" Margin="346,187,0,0" VerticalAlignment="Top" Checked="CE_H_2_Checked"/>
+                    <CheckBox x:Name="CE_H_3" Content="" HorizontalAlignment="Left" Margin="346,247,0,0" VerticalAlignment="Top" Checked="CE_H_3_Checked"/>
+                    <CheckBox x:Name="CE_H_4" Content="" HorizontalAlignment="Left" Margin="346,308,0,0" VerticalAlignment="Top" Checked="CE_H_4_Checked"/>
+                    <CheckBox x:Name="CE_H_5" Content="" HorizontalAlignment="Left" Margin="346,370,0,0" VerticalAlignment="Top" Checked="CE_H_5_Checked"/>
+                    <CheckBox x:Name="CE_H_6" Content="" HorizontalAlignment="Left" Margin="346,430,0,0" VerticalAlignment="Top" Checked="CE_H_6_Checked"/>
+                    <CheckBox x:Name="CE_H_7" Content="" HorizontalAlignment="Left" Margin="346,493,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+                    <TextBlock x:Name="CE_DarkChest" HorizontalAlignment="Left" Margin="83,139,0,0" TextWrapping="Wrap" Text="Dark Chest" VerticalAlignment="Top" Height="72" Width="263" FontFamily="Portable User Interface" FontSize="32" TextAlignment="Center" Padding="0,7,0,0"/>
+                    <TextBlock x:Name="CE_LightBridge" HorizontalAlignment="Left" Margin="83,198,0,0" TextWrapping="Wrap" Text="Light Bridge" VerticalAlignment="Top" FontSize="32" Height="72" Width="263" TextAlignment="Center" Padding="0,5,0,0"/>
+                    <TextBlock x:Name="CE_OgreBridge" HorizontalAlignment="Left" Margin="83,259,0,0" TextWrapping="Wrap" Text="Ogre Bridge" VerticalAlignment="Top" TextAlignment="Center" FontSize="32" Width="263" Height="72" Padding="0,3,0,0" FontFamily="Portable User Interface"/>
+                    <TextBlock x:Name="CE_ThrallWayChest" HorizontalAlignment="Left" Margin="83,319,0,0" TextWrapping="Wrap" Text="Thrallway Chest" VerticalAlignment="Top" Height="72" FontSize="32" Width="263" TextAlignment="Center" Padding="0,3,0,0" FontFamily="Portable User Interface"/>
+                    <TextBlock x:Name="CE_Deathsinger" HorizontalAlignment="Left" Margin="83,370,0,0" TextWrapping="Wrap" Text="Deathsinger" VerticalAlignment="Top" Height="72" FontSize="32" TextAlignment="Center" Padding="0,10,0,0" Width="263" FontFamily="Portable User Interface"/>
+                    <TextBlock x:Name="CE_Crota" HorizontalAlignment="Left" Margin="83,430,0,0" TextWrapping="Wrap" Text="Crota" VerticalAlignment="Top" Height="72" FontSize="32" TextAlignment="Center" Width="263" Padding="0,10,0,0"/>
+                    <TextBlock x:Name="CE_UNNAMED" HorizontalAlignment="Left" Margin="83,502,0,0" TextWrapping="Wrap" Text="UNNAMED" VerticalAlignment="Top" Height="72" TextAlignment="Center" FontSize="32" FontFamily="Portable User Interface" Width="263" Padding="0,5,0,0" Foreground="#FBFFFFFF" Visibility="Collapsed"/>
+                </Grid>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem x:Name="SubRaids3" Header="House of Wolves" RenderTransformOrigin="0.684,0.377" Margin="0,-30,0,0">
+                <TextBlock x:Name="DISCLAIMER" HorizontalAlignment="Left" Margin="93,375,0,0" TextWrapping="Wrap" Text="Coming Soon!" VerticalAlignment="Top" FontSize="36" Width="258" Opacity="0.9"/>
+
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>

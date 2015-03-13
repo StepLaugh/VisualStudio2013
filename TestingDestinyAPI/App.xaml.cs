@@ -102,6 +102,7 @@ namespace TestingDestinyAPI
         {
             if (Debugger.IsAttached)
             {
+                
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }

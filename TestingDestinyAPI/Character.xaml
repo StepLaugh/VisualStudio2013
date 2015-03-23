@@ -15,41 +15,58 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0,-30,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="181*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
+        <StackPanel Grid.Row="0" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="10,10,14,10" Grid.RowSpan="2">
+        <Grid x:Name="ContentPanel" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/Images/background.jpg"/>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="35*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="289*"/>
+                <ColumnDefinition Width="191*"/>
                 <ColumnDefinition Width="0*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="char3_back" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="192" Margin="-492,385,0,0" Grid.Row="1" VerticalAlignment="Top" Width="948" Source="/Assets/Emblems/titanTestBack.jpg" Stretch="UniformToFill" Opacity="0.65"/>
-            <Image x:Name="char2_back" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="192" Margin="-492,194,0,0" Grid.Row="1" VerticalAlignment="Top" Width="948" Source="/Assets/Emblems/warlockTestBack.jpg" Stretch="UniformToFill" Opacity="0.65"/>
-            <Image x:Name="char1_back" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="192" Margin="-492,2,0,0" VerticalAlignment="Top" Width="948" Source="/Assets/Emblems/hunterTestBack.jpg" Stretch="UniformToFill" Opacity="0.65" Grid.Row="1"/>
-            <Border x:Name="char1_border" BorderBrush="#FF1BD602" BorderThickness="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="172" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="172"/>
-            <Border x:Name="char3_border" BorderBrush="#FF1BD602" BorderThickness="4" HorizontalAlignment="Left" Height="172" Margin="10,397,0,0" Grid.Row="1" VerticalAlignment="Top" Width="172" Grid.ColumnSpan="2"/>
-            <Border x:Name="char2_border" BorderBrush="#FF1BD602" BorderThickness="4" HorizontalAlignment="Left" Height="172" Margin="10,205,0,0" VerticalAlignment="Top" Width="172" Grid.ColumnSpan="2" Grid.Row="1"/>
-            <TextBlock x:Name="memId_txt" Margin="33,0,10,-8" TextWrapping="Wrap" Text="MembershipID #" VerticalAlignment="Bottom" Height="30" Width="413" FontSize="15" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontFamily="Caviar Dreams" TextAlignment="Right" Grid.Row="1"/>
-            <TextBlock x:Name="userName_txt" HorizontalAlignment="Center" Margin="14,32,10,0" Text="Username" VerticalAlignment="Top" FontSize="60" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" Grid.Column="1" TextOptions.TextHintingMode="Animated" FontStretch="UltraCondensed" ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="432" LineStackingStrategy="BaselineToBaseline"/>
-            <TextBlock x:Name="grimoireScore_txt" HorizontalAlignment="Left" Margin="307,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="139" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" FontSize="30" Text="Grimoire" Grid.Column="1"/>
-            <TextBlock x:Name="clanName_txt" HorizontalAlignment="Left" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="38" FontSize="30" Grid.Column="1" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced">
-            	<Run Text="Clan "/>
-            	<Run Text="Name"/>
-            </TextBlock>
-            <TextBlock x:Name="clanTag_txt" HorizontalAlignment="Left" Margin="322,52,0,51" TextWrapping="Wrap" FontFamily="Euphemia" Width="134" FontSize="30" Grid.Column="1"/>
-            <Button x:Name="char1_btn" Grid.ColumnSpan="2" Content="Char1" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Height="192" Width="192" BorderThickness="2" BorderBrush="{StaticResource PhoneBackgroundBrush}" FontFamily="Euphemia" Padding="0,0,3,0" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Click="char1_btn_Click" RenderTransformOrigin="1,0.495">
+            <Button x:Name="char1_back" Grid.ColumnSpan="3" Content="" HorizontalAlignment="Left" Margin="-495,55,0,0" Grid.Row="1" VerticalAlignment="Top" Width="948" Height="166" Opacity="0.5" Click="char1_back_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Emblems/hunterTestBack.jpg"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="char3_back" Grid.ColumnSpan="3" Content="" HorizontalAlignment="Left" Margin="-496,360,0,0" Grid.Row="1" VerticalAlignment="Top" Width="948" Height="165" Opacity="0.65" BorderBrush="{StaticResource PhoneBorderBrush}" Click="char3_back_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Emblems/titanTestBack.jpg"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="char2_back" Grid.ColumnSpan="3" Content="" HorizontalAlignment="Left" Margin="-495,205,0,0" Grid.Row="1" VerticalAlignment="Top" Width="948" Height="166" Opacity="0.65" BorderBrush="{StaticResource PhoneBorderBrush}" Click="char2_back_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Emblems/warlockTestBack.jpg"/>
+                </Button.Background>
+            </Button>
+            <Border x:Name="char1_border" BorderBrush="#FF1BD602" BorderThickness="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="124" Margin="32,76,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124"/>
+            <Border x:Name="char3_border" BorderBrush="#FF1BD602" BorderThickness="4" HorizontalAlignment="Left" Height="124" Margin="33,381,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2"/>
+            <Border x:Name="char2_border" BorderBrush="#FF1BD602" BorderThickness="4" HorizontalAlignment="Left" Height="124" Margin="33,226,0,0" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2" Grid.Row="1"/>
+            <TextBlock x:Name="memId_txt" Margin="45,0,22,-8" TextWrapping="Wrap" Text="MembershipID #" VerticalAlignment="Bottom" Height="30" Width="413" FontSize="15" HorizontalAlignment="Center" Grid.ColumnSpan="3" FontFamily="Caviar Dreams" TextAlignment="Right" Grid.Row="1"/>
+            <TextBlock x:Name="userName_txt" HorizontalAlignment="Center" Margin="14,93,12,0" Text="Username" VerticalAlignment="Top" FontSize="60" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" Grid.Column="1" TextOptions.TextHintingMode="Animated" FontStretch="UltraCondensed" ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="454" LineStackingStrategy="BaselineToBaseline" Grid.ColumnSpan="2" TextAlignment="Center"/>
+            <TextBlock x:Name="grimoireScore_txt" HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="139" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" FontSize="30" Text="Grimoire" Grid.Column="2" Grid.Row="1"/>
+            <TextBlock x:Name="clanName_txt" HorizontalAlignment="Left" Margin="10,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="38" FontSize="30" Grid.Column="1" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" Grid.Row="1" Text="(Clan Name)"/>
+            <TextBlock x:Name="clanTag_txt" HorizontalAlignment="Left" Margin="32.769,52,0,51" TextWrapping="Wrap" FontFamily="Euphemia" Width="134" FontSize="30" Grid.Column="2"/>
+            <Button x:Name="char1_btn" Grid.ColumnSpan="2" Content="Char1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="144" Width="144" BorderThickness="2" BorderBrush="{StaticResource PhoneBorderBrush}" FontFamily="Euphemia" Padding="0,0,3,0" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Click="char1_btn_Click" RenderTransformOrigin="1,0.495" Margin="22,66,0,0">
                 <Button.Foreground>
                     <ImageBrush Stretch="UniformToFill"/>
                 </Button.Foreground>
@@ -57,7 +74,7 @@
                     <ImageBrush ImageSource="/Assets/Emblems/hunterTest.jpg" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="char2_btn" Content="Char2" HorizontalAlignment="Left" Margin="0,195,0,0" VerticalAlignment="Top" Width="192" Height="192" BorderThickness="2" BorderBrush="{StaticResource PhoneBackgroundBrush}" FontFamily="Euphemia" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0" Click="char2_btn_Click" Grid.ColumnSpan="2">
+            <Button x:Name="char2_btn" Content="Char2" HorizontalAlignment="Left" Margin="23,217,0,0" VerticalAlignment="Top" Width="144" Height="144" BorderThickness="2" BorderBrush="{StaticResource PhoneBorderBrush}" FontFamily="Euphemia" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0" Click="char2_btn_Click" Grid.ColumnSpan="2">
                 <Button.Foreground>
                     <ImageBrush Stretch="UniformToFill"/>
                 </Button.Foreground>
@@ -65,7 +82,26 @@
                     <ImageBrush ImageSource="/Assets/Emblems/warlockTest.jpg" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="char3_btn" Content="Char3" HorizontalAlignment="Left" Margin="0,387,0,0" VerticalAlignment="Top" BorderThickness="2" Width="192" Height="192" BorderBrush="{StaticResource PhoneBackgroundBrush}" FontFamily="Euphemia" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0" Click="char3_btn_Click" Grid.ColumnSpan="2">
+            <Rectangle Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="0" Margin="108,366,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Row="1"/>
+            <Button x:Name="goToLogin_btn" Grid.ColumnSpan="2" Content="Not You?" HorizontalAlignment="Left" Margin="10,595,0,0" Grid.Row="1" VerticalAlignment="Top" Padding="0" UseLayoutRounding="True" FontSize="14" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams" BorderThickness="0" FontStretch="Condensed" Click="goToLogin_btn_Click" Width="87" Height="40" RenderTransformOrigin="0.469,0.508"/>
+            <Button x:Name="goToRaids" Grid.ColumnSpan="3" Content="Raids" HorizontalAlignment="Left" Margin="231,66,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="3,0,0,3" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" FontSize="42" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" Click="goToRaids_Click"/>
+            <Button x:Name="goToSettings" Grid.ColumnSpan="3" Content="Settings" HorizontalAlignment="Left" Margin="234,415,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="3,0,0,3" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" FontSize="42" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" Click="goToSettings_Click"/>
+            <Button x:Name="goToExtras" Grid.ColumnSpan="3" Content="Extras" HorizontalAlignment="Left" Margin="234,296,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="3,0,0,3" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" FontSize="42"/>
+            <Button x:Name="goToWeekly" Grid.ColumnSpan="3" Content="Weekly" HorizontalAlignment="Left" Margin="231,176,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="95" BorderThickness="3,0,0,3" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" HorizontalContentAlignment="Left" FontSize="42" VerticalContentAlignment="Bottom" Click="goToWeekly_Click"/>
+            <Rectangle x:Name="quickWeekly" Grid.ColumnSpan="3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="3" Margin="244,264,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" StrokeThickness="0"/>
+            <Rectangle x:Name="quickNightfall" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="3" Margin="63,264,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" StrokeThickness="0" Grid.Column="2"/>
+            <Rectangle x:Name="quickVOG" Grid.ColumnSpan="3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="3" Margin="244,148,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" StrokeThickness="0"/>
+            <Rectangle x:Name="quickCE" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="3" Margin="64,148,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" StrokeThickness="0" Grid.Column="2"/>
+            <Rectangle x:Name="titleGuard3" HorizontalAlignment="Center" Height="4" Margin="0,159,0,0" Stroke="White" VerticalAlignment="Center" Width="400" StrokeThickness="0" Grid.ColumnSpan="3" Fill="White"/>
+            <TextBlock x:Name="char1_class" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="183,66,0,0" Grid.Row="1" TextWrapping="Wrap" Text="HUNTER" VerticalAlignment="Top" Height="67" Width="206" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="char1_level" HorizontalAlignment="Left" Margin="33,118,0,0" Grid.Row="1" TextWrapping="Wrap" Text="32" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.292" Height="101" Grid.Column="2" Width="104" FontSize="72" TextAlignment="Center" Padding="0,0,0,11" Foreground="#FFE7E200" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams" FontWeight="Bold"/>
+            <TextBlock x:Name="char1_gender" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="211,124,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Female" VerticalAlignment="Top" Height="43" Width="106" FontSize="30" TextAlignment="Center"/>
+            <TextBlock x:Name="char1_race" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="211,161,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Awoken" VerticalAlignment="Top" Height="43" Width="106" FontSize="30" TextAlignment="Center"/>
+            <TextBlock x:Name="char2_class" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="183,219,0,0" Grid.Row="1" TextWrapping="Wrap" Text="WARLOCK" VerticalAlignment="Top" Height="67" Width="206" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="char2_gender" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="211,271,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Male" VerticalAlignment="Top" Height="43" Width="106" FontSize="30" TextAlignment="Center"/>
+            <TextBlock x:Name="char2_race" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="211,308,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Exo" VerticalAlignment="Top" Height="43" Width="106" FontSize="30" TextAlignment="Center"/>
+            <TextBlock x:Name="char2_level" HorizontalAlignment="Left" Margin="33,271,0,0" Grid.Row="1" TextWrapping="Wrap" Text="32" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.292" Height="101" Grid.Column="2" Width="104" FontSize="72" TextAlignment="Center" Padding="0,0,0,11" Foreground="#FFE7E200" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams" FontWeight="Bold"/>
+            <Button x:Name="char3_btn" Content="Char3" HorizontalAlignment="Left" Margin="23,371,0,0" VerticalAlignment="Top" BorderThickness="2" Width="144" Height="144" BorderBrush="{StaticResource PhoneBorderBrush}" FontFamily="Euphemia" Grid.Row="1" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0" Click="char3_btn_Click" Grid.ColumnSpan="2">
                 <Button.Foreground>
                     <ImageBrush Stretch="UniformToFill"/>
                 </Button.Foreground>
@@ -73,17 +109,12 @@
                     <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Emblems/titanTest.jpg"/>
                 </Button.Background>
             </Button>
-            <Rectangle Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="0" Margin="108,366,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Row="1"/>
-            <Button x:Name="goToLogin_btn" Grid.ColumnSpan="2" Content="Not You?" HorizontalAlignment="Left" Margin="0,569,0,-15" Grid.Row="1" VerticalAlignment="Top" Padding="0" UseLayoutRounding="True" FontSize="14" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams" BorderThickness="0" FontStretch="Condensed" Click="goToLogin_btn_Click" Width="87"/>
-            <Button x:Name="goToRaids" Grid.ColumnSpan="2" Content="Raids" HorizontalAlignment="Left" Margin="222,66,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="2,0,0,2" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/NordicaAdvancedRegular.otf#Nordica Advanced" FontSize="46" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" Click="goToRaids_Click"/>
-            <Button x:Name="goToSettings" Grid.ColumnSpan="2" Content="Settings" HorizontalAlignment="Left" Margin="222,449,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="2,0,0,2" FontFamily="Euphemia" FontWeight="Bold" FontSize="36" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left"/>
-            <Button x:Name="goToExtras" Grid.ColumnSpan="2" Content="Extras" HorizontalAlignment="Left" Margin="222,325,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="90" BorderThickness="2,0,0,2" FontFamily="Euphemia" FontWeight="Bold" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" FontSize="36"/>
-            <Button x:Name="goToWeekly" Grid.ColumnSpan="2" Content="Weekly" HorizontalAlignment="Left" Margin="222,188,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Height="95" BorderThickness="2,0,0,2" FontFamily="Euphemia" FontWeight="Bold" HorizontalContentAlignment="Left" FontSize="36" VerticalContentAlignment="Bottom" Click="goToWeekly_Click"/>
-            <Rectangle x:Name="quickWeekly" Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Margin="233,278,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100"/>
-            <Rectangle x:Name="quickNightfall" Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Margin="346,278,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100"/>
-            <Rectangle x:Name="quickVOG" Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Margin="233,151,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100"/>
-            <Rectangle x:Name="quickCE" Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Margin="346,151,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+            <TextBlock x:Name="char3_class" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="183,371,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TITAN" VerticalAlignment="Top" Height="67" Width="206" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="char3_gender" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="206,424,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Female" VerticalAlignment="Top" Height="43" Width="106" FontSize="30" TextAlignment="Center"/>
+            <TextBlock x:Name="char3_race" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="206,462,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Human" VerticalAlignment="Top" Height="43" Width="111" FontSize="30" TextAlignment="Center"/>
+            <TextBlock x:Name="char3_level" HorizontalAlignment="Left" Margin="33,424,0,0" Grid.Row="1" TextWrapping="Wrap" Text="32" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.292" Height="101" Grid.Column="2" Width="104" FontSize="72" TextAlignment="Center" Padding="0,0,0,11" Foreground="#FFE7E200" FontFamily="/TestingDestinyAPI;component/Assets/Fonts/CaviarDreams.ttf#Caviar Dreams" FontWeight="Bold"/>
         </Grid>
+        <TextBlock x:Name="hashtag" HorizontalAlignment="Left" TextWrapping="Wrap" Text="- WDC -" VerticalAlignment="Top" Height="31" Width="470" FontFamily="No" TextAlignment="Center" Opacity="0.75" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,5,0,0"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

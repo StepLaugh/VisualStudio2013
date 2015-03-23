@@ -104,6 +104,8 @@ namespace TestingDestinyAPI
             {
                 
                 // An unhandled exception has occurred; break into the debugger
+                
+                MessageBox.Show("You broke something! Relaunch the App and try it again!");
                 Debugger.Break();
             }
         }
